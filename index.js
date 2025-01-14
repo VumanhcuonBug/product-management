@@ -9,9 +9,11 @@ database.connect();
 const app = express()//goi ham express
 const port = process.env.PORT;//cong chay lay tu env
 
-//embeded route
+//embeded route client
 const route = require("./routes/client/index.route.js");
 
+// embeded route admin
+const routeAdmin = require("./routes/admin/index.route.js");
 
 
 //pug
@@ -21,8 +23,10 @@ app.set("view engine", "pug");
 app.use(express.static("public"));//tao duong dan tinh trong folder public
 
 
-//call routes
+//call routes client
 route(app);
+//call routes admin
+routeAdmin(app);
 
 
 app.listen(port, () => {//mo cong 3000
